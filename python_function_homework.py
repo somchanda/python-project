@@ -1,3 +1,4 @@
+# 1)
 def toKhmerNumeric(number):
     number = "{:,.2f}".format(number)
     number = str(number)
@@ -16,6 +17,7 @@ def toKhmerNumeric(number):
     return number
 
 
+# 2)
 def toKhmerDateTime(date):
     import datetime
     tmp = datetime.datetime.strptime(date, '%Y-%m-%d %H:%M')
@@ -53,6 +55,7 @@ def toKhmerDateTime(date):
 print(toKhmerDateTime('2020-01-23 21:59'))
 
 
+# 3)
 def isNumeric(string):
     string = str(string)
     string = string.replace('.', '')
@@ -61,6 +64,7 @@ def isNumeric(string):
 
 print(isNumeric('78833.283'))
 
+# 4)
 one = ["", "one ", "two ", "three ", "four ",
        "five ", "six ", "seven ", "eight ",
        "nine ", "ten ", "eleven ", "twelve ",
@@ -73,7 +77,6 @@ ten = ["", "", "twenty ", "thirty ", "forty ",
        "ninety "]
 
 
-# n is 1- or 2-digit number
 def numToWords(n, s):
     str = ""
 
@@ -111,7 +114,7 @@ def convertToWords(n):
     return out
 
 
-def num2Words(num):
+def readAsEnglishText(num):
     num = str(num)
     isFloat = num.find('.')
     if isFloat == -1:
@@ -121,4 +124,27 @@ def num2Words(num):
         return convertToWords(int(first)) + ' point ' + convertToWords(int(second))
 
 
-print(num2Words(10000.1))
+print(readAsEnglishText(49383.1))
+
+
+# 4)
+def readAsKhmerText(number):
+    number = str(number)
+    number = number.replace('1', '១')
+    number = number.replace('2', '២')
+    number = number.replace('3', '៣')
+    number = number.replace('4', '៤')
+    number = number.replace('5', '៥')
+    number = number.replace('6', '៦')
+    number = number.replace('7', '៧')
+    number = number.replace('8', '៨')
+    number = number.replace('9', '៩')
+    number = number.replace('0', '០')
+    if number.find('.') == -1:
+        return number
+    else:
+        first, second = number.split('.')
+        return first + ' ក្បៀស ' + second
+
+
+print(readAsKhmerText(10.1))
