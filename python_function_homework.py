@@ -127,7 +127,7 @@ def readAsEnglishText(num):
 print(readAsEnglishText(49383.1))
 
 
-# 4)
+# 5)
 def readAsKhmerText(number):
     number = str(number)
     number = number.replace('1', '១')
