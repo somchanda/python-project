@@ -1,4 +1,7 @@
 from tkinter import Tk, Label, StringVar, Entry, ttk, Button, messagebox
+# global variable
+SELECTED = None
+NUM_SELECT = 0
 # Make the tk window center to screen
 def screen_center(root, width=0, height=0):
     screen_width = root.winfo_screenwidth()
@@ -25,8 +28,13 @@ def update():
     if name_text.get() == '' or id_text.get() == '':
         messagebox.showwarning('Required field', 'Please enter all fields!')
         return
-    tv.set(ITEMS, column=)
-    clear()
+    if NUM_SELECT == 1:
+        tv.item(SELECTED, values=('helllo', 'ley', 'mom'))
+        clear()
+    elif NUM_SELECT == 0:
+        messagebox.showwarning('No item select', 'Please select row you want to delete!')
+    else:
+        messagebox.showwarning('Multi select', 'Please select only one row!')
 
 def delete():
     selected_items = tv.selection()
@@ -35,10 +43,13 @@ def delete():
 
 def edit(event):
     clear()
-    global ITEMS
+    global NUM_SELECT
+    global SELECTED
+    NUM_SELECT = 0
     for selection in tv.selection():
+        NUM_SELECT += 1
+        SELECTED = selection
         item = tv.item(selection)
-        ITEMS = item
         ID, name, gender = item['values'][0:3]
     id_text.set(ID)
     name_text.set(name)
