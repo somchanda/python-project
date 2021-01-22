@@ -29,7 +29,7 @@ def update():
         messagebox.showwarning('Required field', 'Please enter all fields!')
         return
     if NUM_SELECT == 1:
-        tv.item(SELECTED, values=('helllo', 'ley', 'mom'))
+        tv.item(SELECTED, values=(id_text.get(), name_text.get(), gender_text.get()))
         clear()
     elif NUM_SELECT == 0:
         messagebox.showwarning('No item select', 'Please select row you want to delete!')
